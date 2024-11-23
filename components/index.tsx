@@ -5,7 +5,10 @@ import Hero from "./Hero";
 import SignIn from "./Auth/SignIn";
 import ForgotPassword from "./Auth/forgot-password";
 import SignUp from "./Auth/SignUp";
+import AboutUsSection from "./WhoWeAre";
 import ResetPassword from "./Auth/reset-password";
+import ComplaintForm from "./Complaints";
+import ContactUs from "./Contact";
 const components = {
   Header,
   Footer,
@@ -14,7 +17,10 @@ const components = {
   SignUp, 
   SignIn,
   ForgotPassword,
-  ResetPassword
+  ResetPassword,
+  AboutUsSection,
+  ComplaintForm,
+  ContactUs,
 };
 
 export default components;

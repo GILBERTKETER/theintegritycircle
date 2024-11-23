@@ -1,13 +1,13 @@
 "use client"
 import React from 'react';
-import { 
-  Facebook, 
-  Twitter, 
-  Instagram, 
-  Youtube, 
-  Mail, 
-  Phone, 
-  MapPin, 
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube,
+  Mail,
+  Phone,
+  MapPin,
   ArrowRight,
   Clock
 } from 'lucide-react';
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
         { label: "Our Projects", href: "/projects" },
         { label: "Resources", href: "/resources" },
         { label: "News & Updates", href: "/news" },
-        { label: "Contact Us", href: "/contact" }
+        { label: "Contact Us", href: "/contact-us" }
       ]
     },
     {
@@ -75,25 +75,25 @@ const Footer: React.FC = () => {
   ];
 
   const contactInfo: ContactInfo[] = [
-    { 
-      icon: <Mail className="w-5 h-5" />, 
+    {
+      icon: <Mail className="w-5 h-5" />,
       label: "Email",
-      value: "info@integritycircle.co.ke" 
+      value: "info@integritycircle.co.ke"
     },
-    { 
-      icon: <Phone className="w-5 h-5" />, 
+    {
+      icon: <Phone className="w-5 h-5" />,
       label: "Phone",
-      value: "+254 700 000 000" 
+      value: "+254 700 000 000"
     },
-    { 
-      icon: <MapPin className="w-5 h-5" />, 
+    {
+      icon: <MapPin className="w-5 h-5" />,
       label: "Address",
-      value: "Nairobi, Kenya" 
+      value: "Nairobi, Kenya"
     },
-    { 
-      icon: <Clock className="w-5 h-5" />, 
+    {
+      icon: <Clock className="w-5 h-5" />,
       label: "Working Hours",
-      value: "Mon - Fri, 8:00 AM - 5:00 PM" 
+      value: "Mon - Fri, 8:00 AM - 5:00 PM"
     }
   ];
 
@@ -121,7 +121,7 @@ const Footer: React.FC = () => {
   };
 
   const socialIconVariants = {
-    hover: { 
+    hover: {
       scale: 1.2,
       rotate: 8,
       transition: { type: "spring", stiffness: 400 }
@@ -129,7 +129,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <motion.footer 
+    <motion.footer
       className="bg-gray-900 text-gray-300"
       initial="hidden"
       whileInView="visible"
@@ -137,13 +137,13 @@ const Footer: React.FC = () => {
       variants={containerVariants}
     >
       {/* Newsletter Section */}
-      <motion.div 
+      <motion.div
         className="border-b border-gray-800"
         variants={itemVariants}
       >
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <motion.div 
+            <motion.div
               className="text-center md:text-left"
               variants={itemVariants}
             >
@@ -154,7 +154,7 @@ const Footer: React.FC = () => {
                 Subscribe to our newsletter for updates on government projects and activities
               </p>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="w-full md:w-auto"
               variants={itemVariants}
             >
@@ -183,29 +183,29 @@ const Footer: React.FC = () => {
 
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8"
           variants={containerVariants}
         >
           {/* About Section */}
-          <motion.div 
+          <motion.div
             className="lg:col-span-2"
             variants={itemVariants}
           >
-            <motion.h2 
+            <motion.h2
               className="text-2xl font-bold text-white mb-4"
               variants={itemVariants}
             >
               TheIntegrityCircle
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="text-gray-400 mb-6"
               variants={itemVariants}
             >
-              Empowering citizens with transparency and accountability in government projects 
+              Empowering citizens with transparency and accountability in government projects
               across Kenya. Together we build a more informed and engaged society.
             </motion.p>
-            <motion.div 
+            <motion.div
               className="flex gap-4"
               variants={containerVariants}
             >
@@ -226,26 +226,26 @@ const Footer: React.FC = () => {
 
           {/* Quick Links Sections */}
           {footerSections.map((section) => (
-            <motion.div 
+            <motion.div
               key={section.title}
               variants={itemVariants}
             >
-              <motion.h3 
+              <motion.h3
                 className="text-white font-semibold mb-4"
                 variants={itemVariants}
               >
                 {section.title}
               </motion.h3>
-              <motion.ul 
+              <motion.ul
                 className="space-y-2"
                 variants={containerVariants}
               >
                 {section.links.map((link) => (
-                  <motion.li 
+                  <motion.li
                     key={link.label}
                     variants={itemVariants}
                   >
-                    <motion.a 
+                    <motion.a
                       href={link.href}
                       className="text-gray-400 hover:text-white transition-colors inline-flex items-center group"
                       whileHover={{ x: 5 }}
@@ -266,22 +266,22 @@ const Footer: React.FC = () => {
         </motion.div>
 
         {/* Contact Information */}
-        <motion.div 
+        <motion.div
           className="mt-12 pt-8 border-t border-gray-800"
           variants={containerVariants}
         >
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
             variants={containerVariants}
           >
             {contactInfo.map((info) => (
-              <motion.div 
-                key={info.label} 
+              <motion.div
+                key={info.label}
                 className="flex items-center"
                 variants={itemVariants}
                 whileHover={{ scale: 1.02 }}
               >
-                <motion.span 
+                <motion.span
                   className="text-gray-400 mr-3"
                   whileHover={{ rotate: 15 }}
                 >
@@ -298,22 +298,22 @@ const Footer: React.FC = () => {
       </div>
 
       {/* Bottom Bar */}
-      <motion.div 
+      <motion.div
         className="border-t border-gray-800"
         variants={itemVariants}
       >
         <div className="max-w-7xl mx-auto px-4 py-6">
-          <motion.div 
+          <motion.div
             className="flex flex-col md:flex-row justify-between items-center"
             variants={containerVariants}
           >
-            <motion.div 
+            <motion.div
               className="text-gray-400 text-sm text-center md:text-left"
               variants={itemVariants}
             >
               © {new Date().getFullYear()} TheIntegrityCircle. All rights reserved.
             </motion.div>
-            <motion.div 
+            <motion.div
               className="flex gap-6 mt-4 md:mt-0"
               variants={containerVariants}
             >

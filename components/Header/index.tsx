@@ -164,8 +164,7 @@ const Header: React.FC = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <a href="#" className="hover:text-blue-200">Report Corruption</a>
-            <a href="#" className="hover:text-blue-200">File a Complaint</a>
+            <a href="/complaints" className="hover:text-blue-200">File/Report a complaint or corruption</a>
           </motion.div>
         </div>
       </motion.div>
@@ -173,8 +172,6 @@ const Header: React.FC = () => {
       {/* Main Header */}
       <div className="bg-white shadow-lg">
         <div className="max-w-7xl mx-auto px-4">
-          {/* Rest of your existing header code remains exactly the same */}
-          {/* Copy everything from your existing header starting from the div with className="flex justify-between items-center h-20" */}
           <div className="flex justify-between items-center h-20">
             {/* Logo Section */}
             <motion.div
@@ -183,9 +180,11 @@ const Header: React.FC = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ type: "spring", stiffness: 100 }}
             >
-              <div className="text-2xl font-bold text-blue-900">
-                TheIntegrityCircle
-              </div>
+              <Link href="/">
+                <div className="text-2xl font-bold text-blue-900">
+                  TheIntegrityCircle
+                </div>
+              </Link>
             </motion.div>
 
             {/* Desktop Navigation */}

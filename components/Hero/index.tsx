@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -61,13 +62,16 @@ const Hero = () => {
                       Report Corruption
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </button>
-                    <button
-                      type="button"
-                      className="w-full sm:w-auto flex items-center justify-center px-8 py-3 border border-blue-900 text-base font-medium rounded-lg text-blue-900 bg-white hover:bg-blue-50 transition duration-150 ease-in-out"
-                    >
-                      Learn More
-                      <ChevronRight className="ml-2 h-5 w-5" />
-                    </button>
+                    <Link href="/who-we-are">
+
+                      <button
+                        type="button"
+                        className="w-full sm:w-auto flex items-center justify-center px-8 py-3 border border-blue-900 text-base font-medium rounded-lg text-blue-900 bg-white hover:bg-blue-50 transition duration-150 ease-in-out"
+                      >
+                        Learn More
+                        <ChevronRight className="ml-2 h-5 w-5" />
+                      </button>
+                    </Link>
                   </motion.div>
                 </div>
 
