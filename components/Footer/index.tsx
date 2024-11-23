@@ -11,6 +11,7 @@ import {
   ArrowRight,
   Clock
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface FooterSection {
   title: string;
@@ -96,127 +97,242 @@ const Footer: React.FC = () => {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100
+      }
+    }
+  };
+
+  const socialIconVariants = {
+    hover: { 
+      scale: 1.2,
+      rotate: 8,
+      transition: { type: "spring", stiffness: 400 }
+    }
+  };
+
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <motion.footer 
+      className="bg-gray-900 text-gray-300"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={containerVariants}
+    >
       {/* Newsletter Section */}
-      <div className="border-b border-gray-800">
+      <motion.div 
+        className="border-b border-gray-800"
+        variants={itemVariants}
+      >
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-center md:text-left">
+            <motion.div 
+              className="text-center md:text-left"
+              variants={itemVariants}
+            >
               <h3 className="text-xl font-semibold text-white mb-2">
                 Stay Updated with TheIntegrityCircle
               </h3>
               <p className="text-gray-400">
                 Subscribe to our newsletter for updates on government projects and activities
               </p>
-            </div>
-            <div className="w-full md:w-auto">
+            </motion.div>
+            <motion.div 
+              className="w-full md:w-auto"
+              variants={itemVariants}
+            >
               <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-                <input
+                <motion.input
                   type="email"
                   placeholder="Enter your email"
                   className="px-4 py-2 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 flex-grow md:w-64"
                   aria-label="Email for newsletter"
+                  whileFocus={{ scale: 1.02 }}
                 />
-                <button
+                <motion.button
                   type="submit"
                   className="bg-blue-900 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   aria-label="Subscribe to newsletter"
                 >
                   Subscribe
-                </button>
+                </motion.button>
               </form>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8"
+          variants={containerVariants}
+        >
           {/* About Section */}
-          <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold text-white mb-4">TheIntegrityCircle</h2>
-            <p className="text-gray-400 mb-6">
+          <motion.div 
+            className="lg:col-span-2"
+            variants={itemVariants}
+          >
+            <motion.h2 
+              className="text-2xl font-bold text-white mb-4"
+              variants={itemVariants}
+            >
+              TheIntegrityCircle
+            </motion.h2>
+            <motion.p 
+              className="text-gray-400 mb-6"
+              variants={itemVariants}
+            >
               Empowering citizens with transparency and accountability in government projects 
               across Kenya. Together we build a more informed and engaged society.
-            </p>
-            <div className="flex gap-4">
+            </motion.p>
+            <motion.div 
+              className="flex gap-4"
+              variants={containerVariants}
+            >
               {socialLinks.map((social) => (
-                <a
+                <motion.a
                   key={social.platform}
                   href={social.href}
                   className="text-gray-400 hover:text-white transition-colors"
                   aria-label={`Follow us on ${social.platform}`}
+                  variants={socialIconVariants}
+                  whileHover="hover"
                 >
                   {social.icon}
-                </a>
+                </motion.a>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Quick Links Sections */}
           {footerSections.map((section) => (
-            <div key={section.title}>
-              <h3 className="text-white font-semibold mb-4">{section.title}</h3>
-              <ul className="space-y-2">
+            <motion.div 
+              key={section.title}
+              variants={itemVariants}
+            >
+              <motion.h3 
+                className="text-white font-semibold mb-4"
+                variants={itemVariants}
+              >
+                {section.title}
+              </motion.h3>
+              <motion.ul 
+                className="space-y-2"
+                variants={containerVariants}
+              >
                 {section.links.map((link) => (
-                  <li key={link.label}>
-                    <a 
+                  <motion.li 
+                    key={link.label}
+                    variants={itemVariants}
+                  >
+                    <motion.a 
                       href={link.href}
                       className="text-gray-400 hover:text-white transition-colors inline-flex items-center group"
+                      whileHover={{ x: 5 }}
                     >
-                      <ArrowRight className="w-4 h-4 mr-2 transform group-hover:translate-x-1 transition-transform" />
+                      <motion.span
+                        className="inline-block"
+                        whileHover={{ x: 2 }}
+                      >
+                        <ArrowRight className="w-4 h-4 mr-2" />
+                      </motion.span>
                       {link.label}
-                    </a>
-                  </li>
+                    </motion.a>
+                  </motion.li>
                 ))}
-              </ul>
-            </div>
+              </motion.ul>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Contact Information */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <motion.div 
+          className="mt-12 pt-8 border-t border-gray-800"
+          variants={containerVariants}
+        >
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+            variants={containerVariants}
+          >
             {contactInfo.map((info) => (
-              <div 
+              <motion.div 
                 key={info.label} 
                 className="flex items-center"
+                variants={itemVariants}
+                whileHover={{ scale: 1.02 }}
               >
-                <span className="text-gray-400 mr-3">{info.icon}</span>
+                <motion.span 
+                  className="text-gray-400 mr-3"
+                  whileHover={{ rotate: 15 }}
+                >
+                  {info.icon}
+                </motion.span>
                 <div>
                   <p className="text-sm text-gray-400">{info.label}</p>
                   <p className="text-white">{info.value}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-gray-800">
+      <motion.div 
+        className="border-t border-gray-800"
+        variants={itemVariants}
+      >
         <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-400 text-sm text-center md:text-left">
+          <motion.div 
+            className="flex flex-col md:flex-row justify-between items-center"
+            variants={containerVariants}
+          >
+            <motion.div 
+              className="text-gray-400 text-sm text-center md:text-left"
+              variants={itemVariants}
+            >
               © {new Date().getFullYear()} TheIntegrityCircle. All rights reserved.
-            </div>
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="/privacy" className="text-gray-400 hover:text-white text-sm">
-                Privacy Policy
-              </a>
-              <a href="/terms" className="text-gray-400 hover:text-white text-sm">
-                Terms of Service
-              </a>
-              <a href="/sitemap" className="text-gray-400 hover:text-white text-sm">
-                Sitemap
-              </a>
-            </div>
-          </div>
+            </motion.div>
+            <motion.div 
+              className="flex gap-6 mt-4 md:mt-0"
+              variants={containerVariants}
+            >
+              {['Privacy Policy', 'Terms of Service', 'Sitemap'].map((item) => (
+                <motion.a
+                  key={item}
+                  href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                  className="text-gray-400 hover:text-white text-sm"
+                  whileHover={{ y: -2 }}
+                  variants={itemVariants}
+                >
+                  {item}
+                </motion.a>
+              ))}
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
-    </footer>
+      </motion.div>
+    </motion.footer>
   );
 };
 
