@@ -1,32 +1,18 @@
 "use client"
 
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Shield, Users, LineChart, ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-interface StatType {
-  value: string;
-  label: string;
-  prefix?: string;
-  suffix?: string;
-}
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
-
-  const stats: StatType[] = [
-    { value: "2.5M", label: "Citizens Engaged", prefix: "+" },
-    { value: "94", label: "Counties Covered", suffix: "%" },
-    { value: "15K", label: "Cases Resolved", prefix: ">" },
-    { value: "850", label: "Active Volunteers", prefix: "+" },
-  ];
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
   return (
-    <div className="relative bg-white overflow-hidden">
+    <div className="relative bg-white overflow-hidden mb-10">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-white" />
@@ -36,7 +22,7 @@ const Hero = () => {
 
       <div className="relative">
         <div className="w-full mx-auto">
-          <div className="relative z-10 pb-8  sm:pb-16 md:pb-20 lg:pb-28 xl:pb-32">
+          <div className="relative z-10">
             <main className=" mx-auto w-full">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 {/* Left Column - Text Content */}
@@ -107,78 +93,6 @@ const Hero = () => {
                 </motion.div>
 
               </div>
-
-              {/* Stats Section */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                className="mt-24 max-w-7xl p-4 mx-auto grid grid-cols-2 gap-6 md:grid-cols-4"
-              >
-                {stats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="px-4 py-6 bg-white shadow-lg rounded-lg text-center"
-                  >
-                    <div className="text-2xl font-bold text-blue-900">
-                      {stat.prefix}{stat.value}{stat.suffix}
-                    </div>
-                    <div className="mt-1 text-sm text-gray-500">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-
-              {/* Features Section */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-                transition={{ duration: 0.5, delay: 1 }}
-                className="mt-24 max-w-7xl p-4 mx-auto grid grid-cols-1 md:grid-cols-3 gap-8"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <Shield className="h-8 w-8 text-blue-900" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      Protected Reporting
-                    </h3>
-                    <p className="mt-2 text-gray-500">
-                      Secure and anonymous channels for reporting corruption.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <Users className="h-8 w-8 text-blue-900" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      Community Engagement
-                    </h3>
-                    <p className="mt-2 text-gray-500">
-                      Connect with active citizens and organizations.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <LineChart className="h-8 w-8 text-blue-900" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      Impact Tracking
-                    </h3>
-                    <p className="mt-2 text-gray-500">
-                      Monitor progress and measure community impact.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
             </main>
           </div>
         </div>

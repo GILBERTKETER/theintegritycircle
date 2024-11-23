@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Menu, ChevronDown, Search, Bell, User, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 interface NavItem {
   items: string[];
@@ -373,7 +374,9 @@ const Header: React.FC = () => {
                 type="button"
               >
                 <User className="w-5 h-5" />
-                <span>Sign In</span>
+                <Link href="/auth/signin">
+                  <span>Sign In</span>
+                </Link>
               </motion.button>
             </motion.div>
 
@@ -393,7 +396,7 @@ const Header: React.FC = () => {
               >
                 <Menu className="w-6 h-6" />
               </motion.button>
-              </motion.div>
+            </motion.div>
           </div>
         </div>
 

@@ -1,26 +1,27 @@
-
-"use client"
-import React from 'react';
-import { UserPlus, Mail, Lock, User, Chrome } from 'lucide-react';
-import { motion } from 'framer-motion';
+"use client";
+import React from "react";
+import { UserPlus, Mail, Lock, User, Chrome } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface SignUpProps {
   onSubmit: (name: string, email: string, password: string) => void;
   onGoogleSignUp: () => void;
 }
+
 const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 }
-  };
-  
-  const slideUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
+const slideUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 const SignUp = ({ onSubmit, onGoogleSignUp }: SignUpProps) => {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,26 +29,41 @@ const SignUp = ({ onSubmit, onGoogleSignUp }: SignUpProps) => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       initial="hidden"
       animate="visible"
-      className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
+      className="min-h-screen flex flex-col lg:flex-row items-center justify-start bg-gray-50 "
+    > <motion.div
+      variants={fadeIn}
+      transition={{ duration: 0.5 }}
+      className="flex justify-center lg:w-3/4 w-full h-full lg:h-screen"
     >
-      <div className="max-w-md w-full space-y-8">
-        <motion.div
-          variants={slideUp}
-          transition={{ duration: 0.5 }}
-        >
+        <img
+          src="/images/signup.jpg" // Replace with your image path
+          alt="Sign Up Illustration"
+          className="object-cover h-full w-full"
+        />
+      </motion.div>
+      <motion.div
+        variants={slideUp}
+        className="max-w-md w-full lg:pl-12 lg:pr-6 lg:h-screen p-10 flex flex-col justify-center space-y-8"
+      >
+
+        {/* Heading */}
+        <motion.div variants={slideUp} transition={{ duration: 0.5 }}>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-blue-900">
             Create your account
           </h2>
         </motion.div>
+
+        {/* Form */}
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <motion.div 
+          <motion.div
             className="rounded-md shadow-sm space-y-4"
             variants={slideUp}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
+            {/* Name Field */}
             <div>
               <label htmlFor="name" className="sr-only">
                 Full Name
@@ -69,6 +85,8 @@ const SignUp = ({ onSubmit, onGoogleSignUp }: SignUpProps) => {
                 />
               </div>
             </div>
+
+            {/* Email Field */}
             <div>
               <label htmlFor="email" className="sr-only">
                 Email address
@@ -90,6 +108,8 @@ const SignUp = ({ onSubmit, onGoogleSignUp }: SignUpProps) => {
                 />
               </div>
             </div>
+
+            {/* Password Field */}
             <div>
               <label htmlFor="password" className="sr-only">
                 Password
@@ -113,10 +133,8 @@ const SignUp = ({ onSubmit, onGoogleSignUp }: SignUpProps) => {
             </div>
           </motion.div>
 
-          <motion.div
-            variants={slideUp}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
+          {/* Submit Button */}
+          <motion.div variants={slideUp} transition={{ duration: 0.5, delay: 0.4 }}>
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -130,37 +148,41 @@ const SignUp = ({ onSubmit, onGoogleSignUp }: SignUpProps) => {
             </motion.button>
           </motion.div>
 
-          <motion.div 
+          {/* Google Sign-Up Button */}
+          <motion.div
             className="mt-6"
             variants={fadeIn}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-gray-50 text-gray-500">
-                  Or continue with
-                </span>
-              </div>
-            </div>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              type="button"
+              onClick={onGoogleSignUp}
+              className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900"
+            >
+              <Chrome className="h-5 w-5 text-gray-400 mr-2" />
+              Sign up with Google
+            </motion.button>
+          </motion.div>
 
-            <div className="mt-6">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="button"
-                onClick={onGoogleSignUp}
-                className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900"
-              >
-                <Chrome className="h-5 w-5 text-gray-400 mr-2" />
-                Sign up with Google
-              </motion.button>
-            </div>
+          {/* Sign-In Section */}
+          <motion.div
+            variants={fadeIn}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="flex flex-col items-center space-y-4 mt-4"
+          >
+            <motion.a
+              whileHover={{ scale: 1.05, color: "#3b82f6" }}
+              whileTap={{ scale: 0.95 }}
+              href="/auth/signin"
+              className="text-sm font-medium text-blue-900 hover:text-blue-700"
+            >
+              Already have an account? <span className="font-semibold">Sign In</span>
+            </motion.a>
           </motion.div>
         </form>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
