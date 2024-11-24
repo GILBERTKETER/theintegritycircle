@@ -54,14 +54,18 @@ const Hero = () => {
                     animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                     className="mt-8 sm:flex sm:justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4"
+
                   >
-                    <button
-                      type="button"
-                      className="w-full sm:w-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-900 hover:bg-blue-800 transition duration-150 ease-in-out shadow-sm"
-                    >
-                      Report Corruption
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </button>
+                    <Link href="/complaints">
+
+                      <button
+                        type="button"
+                        className="mb-10 w-full sm:w-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-900 hover:bg-blue-800 transition duration-150 ease-in-out shadow-sm"
+                      >
+                        Report Corruption
+                        <ArrowRight className="ml-2 h-5 w-5" />
+                      </button>
+                    </Link>
                     <Link href="/who-we-are">
 
                       <button
@@ -82,7 +86,7 @@ const Hero = () => {
                   transition={{ duration: 0.5, delay: 0.6 }}
                   className="relative h-[50vh]"
                 >
-                  <div className="absolute inset-0 bg-blue-900/5 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-blue-900/5 overflow-hidden">
                     <video
                       autoPlay
                       loop

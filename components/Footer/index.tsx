@@ -158,7 +158,7 @@ const Footer: React.FC = () => {
               className="w-full md:w-auto"
               variants={itemVariants}
             >
-              <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
+              <form className="flex gap-2 lg:flex-row flex-col" onSubmit={(e) => e.preventDefault()}>
                 <motion.input
                   type="email"
                   placeholder="Enter your email"

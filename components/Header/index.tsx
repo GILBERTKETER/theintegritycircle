@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
 interface NavItem {
-  items: string[];
+  items: { name: string; url: string }[];
 }
 
 interface NavItems {
@@ -77,18 +77,34 @@ const Header: React.FC = () => {
 
   const navItems: NavItems = {
     "Counties": {
-      items: ["Browse Counties", "County Performance", "Development Projects", "County Resources"]
+      items: [
+        { name: "Browse Counties", url: "/counties" },
+        { name: "Development Projects", url: "/projects" },
+      ]
     },
     "Projects": {
-      items: ["Ongoing Projects", "Completed Projects", "Project Tracking", "Impact Assessment"]
+      items: [
+        { name: "Ongoing Projects", url: "/projects/ongoing-projects" },
+        { name: "Completed Projects", url: "/projects/completed-projects" }
+      ]
     },
     "Resources": {
-      items: ["Documents", "Reports", "Guidelines", "Open Data"]
+      items: [
+        { name: "Documents", url: "/resources/documents" },
+        { name: "Reports", url: "/resources/reports" },
+        { name: "Guidelines", url: "/resources/guidelines" },
+        { name: "Open Data", url: "/resources/data" }
+      ]
     },
     "Community": {
-      items: ["Forums", "Events", "Success Stories", "Get Involved"]
+      items: [
+        { name: "Forums", url: "/community/forum-discussion" },
+        { name: "Expert QA", url: "/community/expert-qa" },
+        // { name: "Get Involved", url: "/community/involved" }
+      ]
     }
   };
+
 
   const handleMouseEnter = (key: string): void => {
     setActiveDropdown(key);
@@ -226,22 +242,25 @@ const Header: React.FC = () => {
                       >
                         <div className="py-2">
                           {value.items.map((item, itemIndex) => (
-                            <motion.a
-                              key={item}
-                              href="#"
-                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900"
-                              role="menuitem"
+                            <motion.div
+                              key={item.name}
                               initial={{ x: -20, opacity: 0 }}
                               animate={{ x: 0, opacity: 1 }}
                               transition={{ delay: itemIndex * 0.05 }}
                             >
-                              {item}
-                            </motion.a>
+                              <Link href={item.url}
+                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900"
+                                role="menuitem"
+                              >
+                                {item.name}
+                              </Link>
+                            </motion.div>
                           ))}
                         </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
+
                 </motion.div>
               ))}
             </div>
@@ -440,18 +459,19 @@ const Header: React.FC = () => {
                       transition={{ delay: 0.2 }}
                     >
                       {value.items.map((item, itemIndex) => (
-                        <motion.a
-                          key={item}
-                          href="#"
-                          className="block px-3 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-900"
-                          role="menuitem"
-                          initial={{ x: -10, opacity: 0 }}
+                        <motion.div
+                          key={item.name}
+                          initial={{ x: -20, opacity: 0 }}
                           animate={{ x: 0, opacity: 1 }}
                           transition={{ delay: itemIndex * 0.05 }}
-                          whileHover={{ x: 5 }}
                         >
-                          {item}
-                        </motion.a>
+                          <Link href={item.url}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-900"
+                            role="menuitem"
+                          >
+                            {item.name}
+                          </Link>
+                        </motion.div>
                       ))}
                     </motion.div>
                   </motion.div>
